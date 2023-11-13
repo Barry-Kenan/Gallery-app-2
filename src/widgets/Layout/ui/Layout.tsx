@@ -3,7 +3,7 @@ import { FC } from 'react';
 import styles from './Layout.module.scss';
 import { LayoutProps } from './Layout.props';
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+export const Layout: FC<LayoutProps> = ({ children }) => {
 	return (
 		<div className={styles.wrapper}>
 			<Header className={styles.header} />
@@ -14,5 +14,3 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 		</div>
 	);
 };
-
-export default Layout;

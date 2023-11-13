@@ -1,8 +1,10 @@
+@use '@/shared/styles' as *;
+
 .header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background: gray;
+	background: $background;
 
 	.logo {
 		margin: 0;

@@ -1,1 +1,1 @@
-export { withLayout } from './Layout/ui/LayoutHOC';
+export { Layout } from './Layout/ui/Layout';

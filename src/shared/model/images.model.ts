@@ -1,18 +1,22 @@
+import { IImage } from '@/shared/interfaces';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 interface ImagesStore {
-	count: number;
-	inc: () => void;
-	dec: () => void;
+	images: IImage[];
+	deletedImages: IImage[];
+	setImages: (images: IImage[]) => void;
+	setDeletedImage: (images: IImage) => void;
 }
 
 export const useImagesStore = create<ImagesStore>()(
 	devtools(
-		set => ({
-			count: 0,
-			inc: () => set(state => ({ count: state.count + 1 })),
-			dec: () => set(state => ({ count: state.count - 1 }))
+		(set, get) => ({
+			images: [],
+			deletedImages: [],
+			setImages: images => set({ images }),
+			setDeletedImage: image =>
+				set({ deletedImages: [...get().deletedImages, image] })
 		}),
 		{
 			name: 'images'

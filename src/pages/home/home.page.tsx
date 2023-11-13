@@ -1,24 +1,19 @@
+import { Cards } from '@/features';
 import { useImagesStore } from '@/shared/model';
-import { withLayout } from '@/widgets';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { FC } from 'react';
+import { Layout } from '@/widgets';
+import { useEffect } from 'react';
+import { HomePageProps } from './home.page.props';
 
-const HomePage: FC = () => {
-	const { count, dec, inc } = useImagesStore();
+const HomePage = ({ images }: HomePageProps): JSX.Element => {
+	const { setImages } = useImagesStore();
+	useEffect(() => {
+		setImages(images);
+	}, []);
 	return (
-		<>
-			<h3>{count}</h3>
-			<Stack spacing={2} direction='row'>
-				<Button variant='contained' onClick={inc}>
-					Increment
-				</Button>
-				<Button variant='outlined' onClick={dec}>
-					Decrement
-				</Button>
-			</Stack>
-		</>
+		<Layout>
+			<Cards />
+		</Layout>
 	);
 };
 
-export default withLayout(HomePage);
+export default HomePage;
