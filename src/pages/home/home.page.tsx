@@ -1,9 +1,10 @@
 import { useImagesStore } from '@/shared/model';
+import { withLayout } from '@/widgets';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { FC } from 'react';
 
-export const HomePage: FC = () => {
+const HomePage: FC = () => {
 	const { count, dec, inc } = useImagesStore();
 	return (
 		<>
@@ -19,3 +20,5 @@ export const HomePage: FC = () => {
 		</>
 	);
 };
+
+export default withLayout(HomePage);
