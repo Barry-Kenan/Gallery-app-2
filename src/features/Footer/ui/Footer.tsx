@@ -6,7 +6,7 @@ import { FooterProps } from './Footer.props';
 export const Footer: FC<FooterProps> = ({ className, ...props }) => {
 	return (
 		<div className={cn(className, styles.footer)} {...props}>
-			<h3 className={styles.title}>Photo Gallery</h3>
+			<h4 className={styles.title}>Photo Gallery</h4>
 		</div>
 	);
 };

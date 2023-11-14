@@ -7,7 +7,7 @@ import { HeaderProps } from './Header.props';
 export const Header: FC<HeaderProps> = ({ className, ...props }) => {
 	return (
 		<div className={cn(className, styles.header)} {...props}>
-			Logo
+			<h4>Logo</h4>
 			<ContentRadio />
 		</div>
 	);
