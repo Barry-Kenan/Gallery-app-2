@@ -1,19 +1,17 @@
-import { Cards } from '@/features';
+import { GALLERY } from '@/shared/consts';
+import { sortArray } from '@/shared/lib';
 import { useImagesStore } from '@/shared/model';
-import { Layout } from '@/widgets';
+import { Gallery, Layout, Tree } from '@/widgets';
 import { useEffect } from 'react';
 import { HomePageProps } from './home.page.props';
 
 const HomePage = ({ images }: HomePageProps): JSX.Element => {
-	const { setImages } = useImagesStore();
+	const { setImages, sort, content } = useImagesStore();
 	useEffect(() => {
-		setImages(images);
-	}, []);
-	return (
-		<Layout>
-			<Cards />
-		</Layout>
-	);
+		const sortedImages = sortArray(images, sort);
+		sortedImages && setImages(sortedImages);
+	}, [sort]);
+	return <Layout>{content === GALLERY ? <Gallery /> : <Tree />}</Layout>;
 };
 
 export default HomePage;

@@ -1,14 +1,18 @@
-import { ContentEnum, IImage } from '@/shared/interfaces';
+import { ContentType, IImage, SortType } from '@/shared/interfaces';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { GALLERY, NAME } from '../consts';
 
 interface ImagesStore {
 	images: IImage[];
-	deletedImages: IImage[];
-	content: ContentEnum;
-	setContent: (content: ContentEnum) => void;
+	deletedImages: string[];
+	content: ContentType;
+	sort: SortType;
+	setContent: (content: ContentType) => void;
+	setSort: (sort: SortType) => void;
 	setImages: (images: IImage[]) => void;
 	setDeletedImage: (images: IImage) => void;
+	resetImages: () => void;
 }
 
 export const useImagesStore = create<ImagesStore>()(
@@ -16,11 +20,17 @@ export const useImagesStore = create<ImagesStore>()(
 		(set, get) => ({
 			images: [],
 			deletedImages: [],
-			content: ContentEnum.GALLERY,
+			content: GALLERY,
+			sort: NAME,
 			setImages: images => set({ images }),
-			setDeletedImage: image =>
-				set({ deletedImages: [...get().deletedImages, image] }),
-			setContent: content => set({ content })
+			setDeletedImage: image => {
+				if (!get().deletedImages.includes(image.image)) {
+					set({ deletedImages: [...get().deletedImages, image.image] });
+				}
+			},
+			setContent: content => set({ content }),
+			setSort: sort => set({ sort: sort }),
+			resetImages: () => set({ deletedImages: [] })
 		}),
 		{
 			name: 'images'

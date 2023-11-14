@@ -3,7 +3,7 @@ import { ContentType, SortType } from '../interfaces';
 export const TREE = 'TREE';
 export const GALLERY = 'GALLERY';
 
-export const Content: ContentType[] = [TREE, GALLERY];
+export const Content: ContentType[] = [GALLERY, TREE];
 
 export const CATEGORY = 'CATEGORY';
 export const DATE = 'DATE';
