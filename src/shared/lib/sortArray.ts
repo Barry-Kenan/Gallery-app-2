@@ -1,14 +1,15 @@
-import { IImage, SortEnum } from '@/shared/interfaces';
+import { CATEGORY, DATE, NAME, SIZE } from '@/shared/consts';
+import { IImage, SortType } from '@/shared/interfaces';
 
-export const sortArray = (arr: IImage[], sort: SortEnum) => {
+export const sortArray = (arr: IImage[], sort: SortType) => {
 	switch (sort) {
-		case SortEnum.CATEGORY:
+		case CATEGORY:
 			return arr.sort((a, b) => (a.image > b.image ? 1 : -1));
-		case SortEnum.DATE:
+		case DATE:
 			return arr.sort((a, b) => (a.timestamp > b.timestamp ? 1 : -1));
-		case SortEnum.SIZE:
+		case SIZE:
 			return arr.sort((a, b) => (a.filesize > b.filesize ? 1 : -1));
-		case SortEnum.NAME:
+		case NAME:
 			return arr.sort((a, b) =>
 				a.image.replace(`${a.category}/`, '') >
 				b.image.replace(`${b.category}/`, '')

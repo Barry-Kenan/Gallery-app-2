@@ -1,3 +1,3 @@
-export { ContentEnum } from './Content.enum';
+export type { ContentType } from './Content.type';
 export type { IImage } from './Images.interface';
-export { SortEnum } from './Sort.enum';
+export type { SortType } from './Sort.type';
