@@ -1,13 +1,13 @@
 import { ContentType, SortType } from '../interfaces';
 
-export const TREE = 'TREE';
-export const GALLERY = 'GALLERY';
+export const TREE = 'tree';
+export const GALLERY = 'gallery';
 
-export const Content: ContentType[] = [GALLERY, TREE];
+export const contentArr: ContentType[] = [GALLERY, TREE];
 
-export const CATEGORY = 'CATEGORY';
-export const DATE = 'DATE';
-export const NAME = 'NAME';
-export const SIZE = 'SIZE';
+export const CATEGORY = 'category';
+export const DATE = 'date';
+export const NAME = 'name';
+export const SIZE = 'size';
 
-export const Sort: SortType[] = [CATEGORY, DATE, NAME, SIZE];
+export const sortArr: SortType[] = [CATEGORY, DATE, NAME, SIZE];

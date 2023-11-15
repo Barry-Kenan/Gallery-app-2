@@ -1,3 +1,5 @@
+@use '@/shared/styles' as *;
+
 .wrapper {
 	position: relative;
 	display: flex;
@@ -9,5 +11,7 @@
 		top: 0;
 		z-index: 10;
 		margin: 0 auto;
+		background-color: $gray-light;
+		border-radius: $radius;
 	}
 }

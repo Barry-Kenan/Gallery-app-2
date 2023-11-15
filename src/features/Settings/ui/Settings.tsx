@@ -8,11 +8,18 @@ import styles from './Settings.module.scss';
 import { SettingsProps } from './Settings.props';
 
 export const Settings: FC<SettingsProps> = ({ className, ...props }) => {
-	const { resetImages } = useImagesStore();
+	const { resetImages, deletedImages } = useImagesStore();
+
+	const isDisabled = deletedImages.length === 0;
 	return (
 		<div className={cn(className, styles.settings)} {...props}>
 			<SortRadio />
-			<Button color='primary' onClick={resetImages} className={styles.button}>
+			<Button
+				color='primary'
+				onClick={resetImages}
+				className={styles.button}
+				disabled={isDisabled}
+			>
 				<RestartAltIcon />
 				Reset All
 			</Button>

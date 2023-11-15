@@ -1,4 +1,4 @@
-import { HomePage } from '@/pages/home';
+import { HomePage } from '@/pages';
 import { galleryApi } from '@/shared/api';
 import { IImage } from '@/shared/interfaces';
 import { GetStaticProps } from 'next';
