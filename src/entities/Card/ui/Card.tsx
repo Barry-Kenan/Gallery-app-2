@@ -1,10 +1,10 @@
 import { getImageDate, getImageName, getImageSize } from '@/shared/lib';
 import { useImagesStore } from '@/shared/model';
+import CloseIcon from '@mui/icons-material/Close';
 import { FC, memo } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from './Card.module.scss';
 import { CardProps } from './Card.props';
-import CloseIcon from './icons/close.svg';
 
 export const Card: FC<CardProps> = memo(({ card }) => {
 	const { setDeletedImage } = useImagesStore();
