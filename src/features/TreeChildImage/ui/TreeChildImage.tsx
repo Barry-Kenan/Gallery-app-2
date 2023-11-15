@@ -1,7 +1,9 @@
 import { ImageContent } from '@/entities';
+import { Transition } from '@/shared';
 import { getImageName } from '@/shared/lib';
-import { Modal } from '@mui/material';
-import { FC, useState } from 'react';
+import { useImagesStore } from '@/shared/model';
+import { Dialog } from '@mui/material';
+import { FC, useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from './TreeChildImage.module.scss';
 import { TreeChildImageProps } from './TreeChildImage.props';
@@ -9,9 +11,22 @@ import { TreeChildImageProps } from './TreeChildImage.props';
 export const TreeChildImage: FC<TreeChildImageProps> = ({ data }) => {
 	const imageName = getImageName(data);
 	const API_URL = process.env.NEXT_PUBLIC_API_URL;
-	const [open, setOpen] = useState<boolean>(false);
-	const handleClose = () => setOpen(false);
-	const handleOpen = () => setOpen(true);
+	const { selectedImage, setSelectedImage } = useImagesStore();
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const handleClose = () => {
+		setSelectedImage(null);
+		setIsOpen(false);
+	};
+	const handleOpen = () => {
+		setSelectedImage(data);
+		setIsOpen(true);
+	};
+
+	useEffect(() => {
+		if (!open) {
+			setSelectedImage(null);
+		}
+	}, [open]);
 
 	return (
 		<>
@@ -23,9 +38,20 @@ export const TreeChildImage: FC<TreeChildImageProps> = ({ data }) => {
 				/>
 				<span>{imageName}</span>
 			</div>
-			<Modal open={open} onClose={handleClose} className={styles.modal}>
-				<ImageContent selectedImage={data} className={styles.imageContent} />
-			</Modal>
+			{selectedImage && (
+				<Dialog
+					TransitionComponent={Transition}
+					open={isOpen}
+					onClose={handleClose}
+					keepMounted
+					className={styles.modal}
+				>
+					<ImageContent
+						selectedImage={selectedImage}
+						className={styles.imageContent}
+					/>
+				</Dialog>
+			)}
 		</>
 	);
 };

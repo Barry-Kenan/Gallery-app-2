@@ -8,11 +8,13 @@ interface ImagesStore {
 	deletedImages: string[];
 	content: ContentType;
 	sort: SortType;
+	selectedImage: IImage | null;
 	setContent: (content: ContentType) => void;
 	setSort: (sort: SortType) => void;
 	setImages: (images: IImage[]) => void;
-	setDeletedImage: (images: IImage) => void;
+	setDeletedImage: (image: IImage) => void;
 	resetImages: () => void;
+	setSelectedImage: (image: IImage | null) => void;
 }
 
 export const useImagesStore = create<ImagesStore>()(
@@ -30,7 +32,9 @@ export const useImagesStore = create<ImagesStore>()(
 			},
 			setContent: content => set({ content }),
 			setSort: sort => set({ sort: sort }),
-			resetImages: () => set({ deletedImages: [] })
+			resetImages: () => set({ deletedImages: [] }),
+			selectedImage: null,
+			setSelectedImage: image => set({ selectedImage: image })
 		}),
 		{
 			name: 'images'

@@ -28,10 +28,11 @@ export const Tree: FC = () => {
 			}}
 		>
 			<TreeView
-				aria-label='rich object'
+				aria-label='images tree'
 				defaultCollapseIcon={<MinusSquare />}
 				defaultExpanded={['root']}
 				defaultExpandIcon={<PlusSquare />}
+				disableSelection
 			>
 				{renderTree(data)}
 			</TreeView>

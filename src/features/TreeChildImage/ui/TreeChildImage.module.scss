@@ -21,6 +21,11 @@
 	justify-content: center;
 
 	.imageContent {
+		width: 100%;
 		background-color: $white;
+
+		img {
+			width: 400px;
+		}
 	}
 }
