@@ -7,6 +7,12 @@
 	background-color: $gray-light;
 	border-radius: $radius;
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
+	transition: clip-path 0.3s ease;
+	clip-path: circle(100%);
+
+	&.deleted {
+		clip-path: circle(0);
+	}
 
 	.image {
 		height: 200px;

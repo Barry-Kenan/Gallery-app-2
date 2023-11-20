@@ -1,12 +1,14 @@
 import { getImageDate, getImageName, getImageSize } from '@/shared/lib';
 import { useImagesStore } from '@/shared/model';
 import CloseIcon from '@mui/icons-material/Close';
-import { FC, memo } from 'react';
+import cn from 'classnames';
+import { FC, memo, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from './Card.module.scss';
 import { CardProps } from './Card.props';
 
 export const Card: FC<CardProps> = memo(({ card }) => {
+	const [deleted, setDeleted] = useState<string>('');
 	const { setDeletedImage } = useImagesStore();
 	const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -15,10 +17,17 @@ export const Card: FC<CardProps> = memo(({ card }) => {
 	const size = getImageSize(card);
 
 	const handleClick = () => {
-		setDeletedImage(card);
+		setDeleted(card.image);
+		setTimeout(() => {
+			setDeletedImage(card);
+		}, 300);
 	};
 	return (
-		<div className={styles.card}>
+		<div
+			className={cn(styles.card, {
+				[styles.deleted]: deleted === card.image
+			})}
+		>
 			<LazyLoadImage
 				src={API_URL + card.image}
 				alt={card.category}
