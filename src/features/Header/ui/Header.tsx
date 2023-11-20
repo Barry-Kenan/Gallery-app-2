@@ -2,8 +2,8 @@ import { ContentRadio } from '@/entities';
 import { Settings } from '@/features';
 import { useImagesStore } from '@/shared/model';
 import AnchorIcon from '@mui/icons-material/Anchor';
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
-import { Button } from '@mui/material';
+
+import { BackButton } from '@/shared';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
@@ -27,9 +27,7 @@ export const Header: FC<HeaderProps> = ({ className, ...props }) => {
 				</>
 			) : (
 				<>
-					<Button onClick={handleClick}>
-						<KeyboardReturnIcon />
-					</Button>
+					<BackButton handleClick={handleClick} />
 					<Settings />
 				</>
 			)}
