@@ -11,3 +11,5 @@ export const NAME = 'name';
 export const SIZE = 'size';
 
 export const sortArr: SortType[] = [CATEGORY, DATE, NAME, SIZE];
+
+export const LS_IMAGES = 'LS_IMAGES';
